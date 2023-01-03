@@ -7,7 +7,6 @@ import com.samsad.composetodo.ui.util.Constants.DATABASE_TABLE
 /**
  * @Author: Samsad Chalil Valappil
  * @Date: 03/01/2023
- * samsad.valappil@thedigitalx.ae
  */
 @Entity(tableName = DATABASE_TABLE)
 data class TodoTask(

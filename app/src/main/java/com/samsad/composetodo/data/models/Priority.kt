@@ -9,7 +9,6 @@ import com.samsad.composetodo.ui.theme.NonePriorityColor
 /**
  * @Author: Samsad Chalil Valappil
  * @Date: 03/01/2023
- * samsad.valappil@thedigitalx.ae
  */
 enum class Priority(val color: Color) {
     HIGH(HighPriorityColor), MEDIUM(MediumPriorityColor),
