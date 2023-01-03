@@ -2,7 +2,7 @@ package com.samsad.composetodo.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.samsad.composetodo.ui.util.Constants.DATABASE_TABLE
+import com.samsad.composetodo.util.Constants.DATABASE_TABLE
 
 /**
  * @Author: Samsad Chalil Valappil

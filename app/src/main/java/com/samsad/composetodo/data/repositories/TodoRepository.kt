@@ -2,6 +2,7 @@ package com.samsad.composetodo.data.repositories
 
 import com.samsad.composetodo.data.TodoDao
 import com.samsad.composetodo.data.models.TodoTask
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -9,6 +10,7 @@ import javax.inject.Inject
  * @Author: Samsad Chalil Valappil
  * @Date: 03/01/2023
  */
+@ViewModelScoped
 class TodoRepository @Inject constructor(private val todoDao: TodoDao) {
 
     val getAllTasks: Flow<List<TodoTask>> = todoDao.getAllTasks()

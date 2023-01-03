@@ -1,4 +1,4 @@
-package com.samsad.composetodo.ui.util
+package com.samsad.composetodo.util
 
 /**
  * @Author: Samsad Chalil Valappil

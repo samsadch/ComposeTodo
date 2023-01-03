@@ -3,7 +3,7 @@ package com.samsad.composetodo.di
 import android.content.Context
 import androidx.room.Room
 import com.samsad.composetodo.data.TodoDatabase
-import com.samsad.composetodo.ui.util.Constants.DATABASE_NAME
+import com.samsad.composetodo.util.Constants.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
