@@ -13,7 +13,7 @@ import com.samsad.composetodo.util.Constants.LIST_SCREEN
  * @Date: 16/01/2023
  */
 fun NavGraphBuilder.listComposable(
-    navigateToTaskScreen: (Int) -> Unit
+    navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
     composable(
         route = LIST_SCREEN,

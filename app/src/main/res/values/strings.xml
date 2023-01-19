@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ComposeTodo</string>
     <string name="cd_add_button">Add Button</string>
+    <string name="cd_serach_tasks">Search Tasks</string>
+    <string name="cd_sort_tasks">Sort Tasks</string>
+    <string name="delete_all_action">Delete All</string>
 </resources>

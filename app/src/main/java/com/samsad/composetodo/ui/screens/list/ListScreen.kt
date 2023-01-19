@@ -2,6 +2,7 @@ package com.samsad.composetodo.ui.screens.list
 
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -9,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.samsad.composetodo.R
+import com.samsad.composetodo.ui.theme.FabBgColor
 
 /**
  * @Author: Samsad Chalil Valappil
@@ -17,7 +19,7 @@ import com.samsad.composetodo.R
 
 @Composable
 fun ListScreen(
-    navigateToTaskScreen: (Int) -> Unit
+    navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -34,11 +36,14 @@ fun ListScreen(
 
 @Composable
 fun ListFab(
-    onFabClicked: (Int) -> Unit
+    onFabClicked: (taskId: Int) -> Unit
 ) {
-    FloatingActionButton(onClick = {
-        onFabClicked(-1)
-    }) {
+    FloatingActionButton(
+        onClick = {
+            onFabClicked(-1)
+        },
+        backgroundColor = MaterialTheme.colors.FabBgColor
+    ) {
         Icon(
             imageVector = Icons.Filled.Add,
             contentDescription = stringResource(R.string.cd_add_button)
