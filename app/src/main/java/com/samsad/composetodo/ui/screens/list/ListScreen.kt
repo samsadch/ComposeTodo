@@ -32,7 +32,7 @@ fun ListScreen(
             ListAppBar(sharedViewModel = sharedViewModel, searchAppBarState, searchTextState)
         },
         content = {
-
+            ListContent()
         },
         floatingActionButton = {
             ListFab(navigateToTaskScreen)
