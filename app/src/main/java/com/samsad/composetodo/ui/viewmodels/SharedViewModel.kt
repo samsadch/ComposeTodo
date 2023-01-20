@@ -1,13 +1,15 @@
 package com.samsad.composetodo.ui.viewmodels
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.samsad.composetodo.data.models.TodoTask
 import com.samsad.composetodo.data.repositories.TodoRepository
+import com.samsad.composetodo.util.SearchAppBarState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,6 +21,10 @@ import javax.inject.Inject
 class SharedViewModel @Inject constructor(
     private val repository: TodoRepository
 ) : ViewModel() {
+
+    private val searchAppBarState: MutableState<SearchAppBarState> =
+        mutableStateOf(SearchAppBarState.CLOSED)
+    private val searchTextState: MutableState<String> = mutableStateOf("")
 
     private val _allTasks = MutableStateFlow<List<TodoTask>>(emptyList())
     val allTasks: StateFlow<List<TodoTask>> = _allTasks
