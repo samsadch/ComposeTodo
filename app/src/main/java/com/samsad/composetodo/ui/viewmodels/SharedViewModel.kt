@@ -22,9 +22,9 @@ class SharedViewModel @Inject constructor(
     private val repository: TodoRepository
 ) : ViewModel() {
 
-    private val searchAppBarState: MutableState<SearchAppBarState> =
+    val searchAppBarState: MutableState<SearchAppBarState> =
         mutableStateOf(SearchAppBarState.CLOSED)
-    private val searchTextState: MutableState<String> = mutableStateOf("")
+    val searchTextState: MutableState<String> = mutableStateOf("")
 
     private val _allTasks = MutableStateFlow<List<TodoTask>>(emptyList())
     val allTasks: StateFlow<List<TodoTask>> = _allTasks

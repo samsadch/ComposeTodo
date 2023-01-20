@@ -22,24 +22,44 @@ import com.samsad.composetodo.R
 import com.samsad.composetodo.components.PriorityItem
 import com.samsad.composetodo.data.models.Priority
 import com.samsad.composetodo.ui.theme.*
+import com.samsad.composetodo.ui.viewmodels.SharedViewModel
+import com.samsad.composetodo.util.SearchAppBarState
+import com.samsad.composetodo.util.TrailingIconState
 
 /**
  * @Author: Samsad Chalil Valappil
  * @Date: 19/01/2023
  */
 @Composable
-fun ListAppBar() {
-    /*DefaultListAppBar(
-        onSerachClick = {},
-        onSortClick = {},
-        onDeleteClicked = {}
-    )*/
-    SerachAppBar(
-        text = "",
-        onTextChange = {},
-        onCloseClicked = {},
-        onSerachClicked = {}
-    )
+fun ListAppBar(
+    sharedViewModel: SharedViewModel,
+    searchAppBarState: SearchAppBarState,
+    searchTextState: String
+) {
+    when (searchAppBarState) {
+        SearchAppBarState.CLOSED -> {
+            DefaultListAppBar(
+                onSerachClick = {
+                    sharedViewModel.searchAppBarState.value = SearchAppBarState.OPENED
+                },
+                onSortClick = {},
+                onDeleteClicked = {}
+            )
+        }
+        else -> {
+            SerachAppBar(
+                text = searchTextState,
+                onTextChange = { newText ->
+                    sharedViewModel.searchTextState.value = newText
+                },
+                onCloseClicked = {
+                    sharedViewModel.searchAppBarState.value = SearchAppBarState.CLOSED
+                    sharedViewModel.searchTextState.value = ""
+                },
+                onSerachClicked = {}
+            )
+        }
+    }
 }
 
 @Composable
@@ -161,6 +181,10 @@ fun SerachAppBar(
     onCloseClicked: () -> Unit,
     onSerachClicked: (String) -> Unit
 ) {
+    var trailingIconState by remember {
+        mutableStateOf(TrailingIconState.READY_TO_DELETE)
+    }
+
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -202,7 +226,20 @@ fun SerachAppBar(
             trailingIcon = {
                 IconButton(
                     onClick = {
-                        onCloseClicked()
+                        when (trailingIconState) {
+                            TrailingIconState.READY_TO_DELETE -> {
+                                onTextChange("")
+                                trailingIconState = TrailingIconState.READY_TO_CLOSE
+                            }
+                            TrailingIconState.READY_TO_CLOSE -> {
+                                if(text.isNotEmpty()){
+                                    onTextChange("")
+                                }else{
+                                    onCloseClicked()
+                                    trailingIconState = TrailingIconState.READY_TO_DELETE
+                                }
+                            }
+                        }
                     }
                 ) {
                     Icon(
