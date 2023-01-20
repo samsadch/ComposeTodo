@@ -29,16 +29,16 @@ import com.samsad.composetodo.ui.theme.*
  */
 @Composable
 fun ListAppBar() {
-    DefaultListAppBar(
-        onSerachClick = {
-
-        },
-        onSortClick = {
-
-        },
-        onDeleteClicked = {
-
-        }
+    /*DefaultListAppBar(
+        onSerachClick = {},
+        onSortClick = {},
+        onDeleteClicked = {}
+    )*/
+    SerachAppBar(
+        text = "",
+        onTextChange = {},
+        onCloseClicked = {},
+        onSerachClicked = {}
     )
 }
 
