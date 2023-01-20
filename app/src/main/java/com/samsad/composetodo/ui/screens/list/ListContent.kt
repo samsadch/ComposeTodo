@@ -2,6 +2,8 @@ package com.samsad.composetodo.ui.screens.list
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -22,8 +24,20 @@ import com.samsad.composetodo.ui.theme.*
  * @Date: 20/01/2023
  */
 @Composable
-fun ListContent() {
-
+fun ListContent(
+    todoTasks: List<TodoTask>,
+    navigateToTaskScreen: (taskId: Int) -> Unit
+) {
+    LazyColumn {
+        items(
+            items = todoTasks,
+            key = { task ->
+                task.id
+            }
+        ) { task ->
+            TaskItem(todoTask = task, navigateToTaskScreen = navigateToTaskScreen)
+        }
+    }
 }
 
 @OptIn(ExperimentalMaterialApi::class)
