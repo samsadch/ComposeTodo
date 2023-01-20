@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.samsad.composetodo.data.models.Priority
 import com.samsad.composetodo.data.models.TodoTask
 import com.samsad.composetodo.ui.theme.*
+import com.samsad.composetodo.util.RequestState
 
 /**
  * @Author: Samsad Chalil Valappil
@@ -25,16 +26,29 @@ import com.samsad.composetodo.ui.theme.*
  */
 @Composable
 fun ListContent(
-    todoTasks: List<TodoTask>,
+    todoTasks: RequestState<List<TodoTask>>,
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
-    if (todoTasks.isEmpty()) {
-        EmptyContent()
-    } else {
-        DisplayTasks(
-            todoTasks = todoTasks,
-            navigateToTaskScreen = navigateToTaskScreen
-        )
+    when (todoTasks) {
+        is RequestState.Success -> {
+            if (todoTasks.data.isEmpty()) {
+                EmptyContent()
+            } else {
+                DisplayTasks(
+                    todoTasks = todoTasks.data,
+                    navigateToTaskScreen = navigateToTaskScreen
+                )
+            }
+        }
+        is RequestState.Error -> {
+
+        }
+        RequestState.Idle -> {
+
+        }
+        RequestState.Loading -> {
+
+        }
     }
 }
 
