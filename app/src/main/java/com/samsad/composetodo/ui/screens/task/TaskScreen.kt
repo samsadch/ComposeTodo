@@ -2,6 +2,7 @@ package com.samsad.composetodo.ui.screens.task
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import com.samsad.composetodo.util.Action
 
 /**
  * @Author: Samsad Chalil Valappil
@@ -9,9 +10,13 @@ import androidx.compose.runtime.Composable
  */
 
 @Composable
-fun TaskScreen(){
+fun TaskScreen(
+    navigateToListScreen: (Action) -> Unit
+) {
     Scaffold(
-        topBar = {},
+        topBar = {
+            TaskAppBar(navigateToListScreen = navigateToListScreen)
+        },
         content = {}
     )
 }
