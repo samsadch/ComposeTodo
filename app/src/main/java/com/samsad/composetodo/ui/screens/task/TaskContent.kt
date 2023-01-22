@@ -66,8 +66,7 @@ fun TaskContent(
             label = {
                 Text(text = stringResource(R.string.description))
             },
-            textStyle = MaterialTheme.typography.body1,
-            singleLine = true
+            textStyle = MaterialTheme.typography.body1
         )
     }
 }
