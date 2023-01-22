@@ -1,11 +1,13 @@
 package com.samsad.composetodo.navigation.destinations
 
+import android.util.Log
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.samsad.composetodo.util.Action
 import com.samsad.composetodo.util.Constants
+import com.samsad.composetodo.util.Constants.TASK_ARGUMENT_KEY
 
 /**
  * @Author: Samsad Chalil Valappil
@@ -16,10 +18,11 @@ fun NavGraphBuilder.taskComposable(
 ) {
     composable(
         route = Constants.TASK_SCREEN,
-        arguments = listOf(navArgument(Constants.TASK_ARGUMENT_KEY) {
+        arguments = listOf(navArgument(TASK_ARGUMENT_KEY) {
             type = NavType.IntType
         })
-    ) {
-
+    ) { navBackSTackEntry ->
+        val taskId = navBackSTackEntry.arguments!!.getInt(TASK_ARGUMENT_KEY)
+        Log.d("TaskComposable", taskId.toString())
     }
 }
