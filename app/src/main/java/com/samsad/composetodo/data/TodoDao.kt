@@ -1,11 +1,6 @@
 package com.samsad.composetodo.data
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.samsad.composetodo.data.models.TodoTask
 import kotlinx.coroutines.flow.Flow
 
@@ -32,7 +27,7 @@ interface TodoDao {
     suspend fun deleteTask(todoTask: TodoTask)
 
     @Query("DELETE FROM todo_table")
-    suspend fun deleteAllTasks():Int
+    suspend fun deleteAllTasks(): Int
 
     @Query("SELECT * FROM todo_table WHERE title LIKE :query OR description LIKE :query")
     fun searchDatabase(query: String): Flow<List<TodoTask>>
